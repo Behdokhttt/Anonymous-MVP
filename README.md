@@ -5,7 +5,7 @@
 MENA (Multimodal Epistemic Network Analysis) uses a multimodal approach to analyze caregiver competencies and emotions in an Augmented Reality setting. This project explores meaningful insights and visual representations from participants' attitudes and emotions by analyzing their audio, gestures, and verbal communications captured in video segments during their interaction with a virtual geriatric patient.
 
 <div align="center">
-  <img src="model.jpg" alt="Flowchart of Data Processing" width="80%">
+  <img src="model.png" alt="Flowchart of Data Processing" width="80%">
   <p><strong>Figure 1:</strong> ESP Model Framework: The architecture of the proposed Multimodal Emotional State Classifier consists of four key components: Audio Extraction, Pose Estimation, Text Features integrated with a Knowledge Graph, and a Fusion Network with a classification head. This framework assesses whether participants exhibit positive emotions—supportive and uplifting behaviors—during video segments.</p>
 </div>
 
