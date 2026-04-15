@@ -35,13 +35,12 @@ my_codes <- c(
 )
 
 # Keep turn order within each participant stream
-# If Section_ID is global and already ordered, this works well
+
 data <- data[order(data$Pair_ID, data$Speaker, data$Section_ID), ]
 
 # Optional metadata
 metaCols <- c("Topic_Label", "Avg_Confidence")
 
-# Ensure codes are numeric
 data[, my_codes] <- lapply(data[, my_codes], as.numeric)
 
 # -------------------------
@@ -164,8 +163,6 @@ plot(set.ona, title = paste("Individual dynamic network:", example_unit)) |>
     with_ci = FALSE
   )
 
-# -------------------------
-# Save useful outputs
 # -------------------------
 write.csv(set.ona$points, "MAINS_Dyn_points.csv", row.names = FALSE)
 
