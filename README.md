@@ -10,12 +10,23 @@ MAINS (Multimodal Affective INteraction State Modeling) is a multimodal framewor
 
 ## Process
 
-1. **Knowledge Graph Representation**: 
-   - The text data is converted into a graph-like structure for knowledge graph representation. The text is sent to the ConceptNet API, which extracts information about related words and their relationships. 
-   - This process utilizes the Knowledge Graph code, and the text data is also used to fine-tune the RoBERTa model for improved understanding.
+1. **Turn-level Segmentation and Multimodal Feature Extraction**: 
+   Each conversation is segmented into turn-level video units. From each segment, multimodal features are extracted from three sources:
 
-2. **Data Extraction**: 
-   - Audio data and 3D skeleton data are extracted and integrated with the text-derived features.
+Audio: MFCCs, derivatives, and prosodic features
+Visual: facial Action Unit intensities extracted from OpenFace
+Text: transcribed speech encoded through a transformer-based language model
 
-3. **Model Training**: 
-   - All three modalities—text, audio, and 3D human pose data—are combined to train the model for emotional prediction.
+2. **Multimodal Affective State Classification**: 
+   The extracted audio, visual, and textual features are processed through modality-specific encoders and fused using a cross-modal transformer with gated fusion. The classifier predicts an affective state label for each conversational turn, represented as positive, neutral, or negative.
+
+3. **Integration with Interactional Discourse Codes**: 
+   The predicted affective states are combined with interactional discourse codes derived from the conversation transcripts. This step forms a multimodal code matrix that represents both affective and interactional information at the turn level.
+   
+4. **Adjacency Construction and Aggregation**: 
+   The multimodal code matrix is used to construct adjacency matrices and cumulative representations of interaction patterns.
+5. **Normalization and Dimensionality Reduction**: 
+  The resulting representations are normalized and projected into a low-dimensional space for analysis and visualization.
+
+6. **Modeling Social Interaction**: 
+   The final MAINS framework captures both the co-occurrence structure and the temporal evolution of affective and interactional states.
