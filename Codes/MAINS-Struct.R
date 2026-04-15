@@ -39,7 +39,6 @@ conversationCols <- c("Stanza_ID")
 # Optional metadata to keep in the ENA set
 metaCols <- c("Topic_Label", "Avg_Confidence")
 
-# Ensure code columns are numeric
 data[, codeCols] <- lapply(data[, codeCols], as.numeric)
 
 # Create unique ENA unit label
@@ -100,7 +99,6 @@ ena.plot(set.ena, title = "MAINS-Struct mean network and participant points") |>
 # -------------------------
 # Example individual network
 # -------------------------
-# Replace with any ENA_UNIT visible in your data
 example_unit <- rownames(set.ena$points$ENA_UNIT)[1]
 
 unit.line.weights <- as.matrix(set.ena$line.weights$ENA_UNIT[[example_unit]])
@@ -110,8 +108,6 @@ ena.plot(set.ena, title = paste("Individual network:", example_unit)) |>
   ena.plot.network(network = unit.line.weights, colors = c("darkgreen")) |>
   ena.plot.points(points = unit.point, colors = c("darkgreen"))
 
-# -------------------------
-# Save useful outputs
 # -------------------------
 write.csv(set.ena$points, "MAINS_Struct_points.csv", row.names = FALSE)
 
